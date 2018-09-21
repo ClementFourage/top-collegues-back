@@ -17,17 +17,17 @@ public class Collegue {
     private String email;
     private String adresse;
     private Integer score;
-    private String imageUrl;
+    private String photo;
 
-	public Collegue(String pseudo, String prenom, String nom, String email, String adresse, Integer score, String imageUrl) {
+	public Collegue(String pseudo, String prenom, String nom, String adresse, Integer score, String photo) {
 		super();
 		this.pseudo = pseudo;
 		this.prenom = prenom;
 		this.nom = nom;
-		this.email = email;
+		this.email = nom + "." + prenom + "@hotmail.fr";
 		this.adresse = adresse;
 		this.score = score;
-		this.imageUrl = imageUrl;
+		this.photo = photo;
 	}
 
 
@@ -106,13 +106,13 @@ public class Collegue {
 	}
 
 
-	public String getImageUrl() {
-		return imageUrl;
+	public String getPhoto() {
+		return photo;
 	}
 
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	
 	

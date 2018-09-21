@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import dev.top.controller.views.ErrorView;
 import dev.top.controller.views.ErrorCode;
+import dev.top.controller.views.ErrorView;
+import dev.top.exceptions.InvalidMatriculeException;
 import dev.top.exceptions.PseudoInvalideException;
 import dev.top.exceptions.ServiceException;
 
@@ -30,5 +31,11 @@ public class ServiceExceptionCtrl {
         return ResponseEntity.badRequest().body(new ErrorView(ErrorCode.JSON_PARSE,
                 "Erreur dans la conversion Java <> JSON (vérifier vos paramètres d'entrée)"));
     }
+
+    @ExceptionHandler(InvalidMatriculeException.class)
+	public ResponseEntity<?> matriculeException() {
+		return ResponseEntity.badRequest()
+				.body(new ErrorView(ErrorCode.MATRICULE_INVALID, "Le matricule n'a pas été trouvé en base de données"));
+	}
 
 }
